@@ -231,28 +231,3 @@ new IntersectionObserver(es=>es.forEach(e=>{
   if(e.isIntersecting&&!shown)timer=setTimeout(openB,2600);
 }),{threshold:.7}).observe($("#end .stitch"));
 
-/* ===== Music: set the link in index.html → <button id="mbtn" data-yt="YOUR LINK"> ===== */
-const mbtn=$("#mbtn"), toast=$("#toast");
-let yt=null, started=false, playing=false;
-function vid(u){
-  try{const x=new URL((u||"").trim());
-    if(x.hostname.includes("youtu.be"))return x.pathname.slice(1).split("/")[0];
-    if(x.searchParams.get("v"))return x.searchParams.get("v");
-    const m=x.pathname.match(/\/(embed|shorts|live)\/([\w-]{6,})/);if(m)return m[2];
-  }catch(e){}
-  return /^[\w-]{11}$/.test((u||"").trim())?u.trim():null;
-}
-function say(msg){toast.textContent=msg;toast.classList.add("show");setTimeout(()=>toast.classList.remove("show"),3200)}
-function cmd(f){yt&&yt.contentWindow&&yt.contentWindow.postMessage(JSON.stringify({event:"command",func:f,args:[]}),"*")}
-function setUI(){mbtn.classList.toggle("on",playing);mbtn.setAttribute("aria-pressed",playing)}
-mbtn.addEventListener("click",()=>{
-  if(!started){
-    const id=vid(mbtn.dataset.yt);
-    if(!id){say("No music link set yet — add it in index.html (data-yt).");return}
-    yt=document.createElement("iframe");
-    yt.title="Background music";yt.allow="autoplay; encrypted-media";yt.referrerPolicy="strict-origin-when-cross-origin";
-    yt.src=`https://www.youtube.com/embed/${id}?autoplay=1&loop=1&playlist=${id}&controls=0&enablejsapi=1&playsinline=1`+(location.origin.startsWith("http")?`&origin=${encodeURIComponent(location.origin)}`:"");
-    $("#ytwrap").appendChild(yt);started=playing=true;setUI();return;
-  }
-  playing=!playing;cmd(playing?"playVideo":"pauseVideo");setUI();
-});
