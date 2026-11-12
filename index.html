@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>藍の光 — Stitched in Light</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="bar"></div>
+<div id="orb"></div>
+<canvas id="fx"></canvas>
+
+<main>
+  <section>
+    <h1 class="reveal">私たちと、その先へ</h1>
+    <p class="sub reveal">to us and beyond — a poem in indigo, from first light to last</p>
+    <div class="hint reveal">scroll slowly<i></i></div>
+  </section>
+
+  <section><div class="stitch">
+    <h2>暁 · first light</h2>
+    <p>To keep pace is to perform — where</p>
+    <p>surrender can feel like failing beneath</p>
+    <p>the naked, unsparing glare of day,</p>
+    <p>meant only to be looked at.</p></br>
+    <p>But I would gladly cast a shadow over that</p>
+    <p>just so a cool breath of relief might drift through, 
+      untouched by the heat of being seen.</p>
+  </div></section>
+
+  <section><div class="stitch">
+    <h2>昼 · noon</h2>
+    <p>Even the sturdiest tree will crumble</p>
+    <p>when the very earth beneath its roots is shaken by storms.,</p></br>
+    <p>Even the brightest blossoms must fade.</p>
+    <p>Everything learns humility — or is forced to bend — </p>
+    <p>even the quiet mountains, ancient and stronger than the fragile life that clings to them.</p>
+    <p>Yet I am a tender witness to how softly I break, and how helpless I become, the moment it concerns you.</p>
+  </div></section>
+
+  <section><div class="stitch">
+    <h2>夕 · dusk</h2>
+    <p>‎It is always easier to let go than to keep tending a fire that only leaves your hands tired. </p>
+    <p>But with you, the labor of loving becomes a quiet harmony.</p>
+    <p>Nothing asks for perfection here — only truth. Simplicity becomes my way of turning heavy days into something tender and familiar — </p>
+    <p>so long as it is measured against your worth.</p>
+  </div></section>
+
+  <section><div class="stitch">
+    <h2>宵 · twilight</h2>
+    <p>Nothing worth keeping was ever effortless. I love the quiet work of holding us together.
+‎</p>
+    <p>‎I breathe you in,</p>
+    <p>and I will always reach for you across the dark.</p>
+  </div></section>
+
+  <section><div class="stitch">
+    <h2>夜 · midnight</h2>
+    <p>Shadows make the weight of things so much clearer; the heavy mists no longer have to hide.</p>
+    <p>Your love has always been my open door — a quiet place to rest whatever cannot bear the light of day.</p>
+  </div></section>
+
+  <section id="end"><div class="stitch">
+    <h2>終 · the end</h2>
+    <p>So here is what the long blue day has made:</p>
+    <p>a small bouquet, tied with a strip of selvedge,</p>
+    <p>for you who stayed to watch the light go out.</p>
+    <button class="btn" id="open" type="button">Receive the bouquet</button>
+  </div></section>
+</main>
+
+<!-- ============ MUSIC ============
+     Paste YOUR YouTube link in data-yt below. Viewers only get the on/off toggle. -->
+<button id="mbtn" type="button" aria-label="Toggle music" aria-pressed="false" title="Music"
+        data-yt="https://youtu.be/FG2PgVl0Nlc?si=fTiDUMLrPO6xVfBp">
+  <svg id="icoOff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/><path d="M3 3l18 18" stroke="#e7a39f"/></svg>
+  <svg id="icoOn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
+</button>
+<div id="toast" role="status"></div>
+<div id="ytwrap"></div>
+
+<!-- ============ BOUQUET POP-UP ============ -->
+<div id="modal" role="dialog" aria-modal="true" aria-label="Denim bouquet">
+  <div class="card">
+    <button class="x" id="close" type="button" aria-label="Close">&times;</button>
+    <div class="art"><svg id="bq" viewBox="0 0 400 420" aria-hidden="true"></svg></div>
+    <div class="txt">
+      <h3>藍の花束</h3>
+      <p class="cap">a bouquet for the end of the light</p>
+      <div class="legend" id="legend"></div>
+      <button class="btn" id="again" type="button">Read the poem again</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
